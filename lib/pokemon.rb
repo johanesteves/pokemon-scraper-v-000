@@ -16,6 +16,7 @@ attr_reader :id, :name, :type, :db, :hp
 
   def self.find(id, db)
     db_pokemon = db.execute("SELECT * FROM pokemon WHERE id = (?)", id)[0]
+    
     if @@all.collect {|pokemon|pokemon.id}.include?(id)
       @@all.detect {|pokemon| id == pokemon.id}
     else
