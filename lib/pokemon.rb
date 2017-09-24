@@ -16,7 +16,7 @@ attr_reader :id, :name, :type, :db, :hp
 
   def self.find(id, db)
     db_pokemon = db.execute("SELECT * FROM pokemon WHERE id = (?)", id)[0]
-    
+
     if @@all.collect {|pokemon|pokemon.id}.include?(id)
       @@all.detect {|pokemon| id == pokemon.id}
     else
@@ -26,7 +26,6 @@ attr_reader :id, :name, :type, :db, :hp
 
   def alter_hp(hp, db)
     db.execute("UPDATE pokemon SET hp = (?) WHERE id = (?)", hp, self.id)
-    @hp = hp
   end
 
 end
