@@ -26,6 +26,7 @@ attr_reader :id, :name, :type, :db, :hp
 
   def alter_hp(hp, db)
     db.execute("UPDATE pokemon SET hp = (?) WHERE id = (?)", hp, self.id)
+    @hp = hp
   end
 
 end
